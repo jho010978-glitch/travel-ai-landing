@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>취향여행 AI 시안 A</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --ink:#16201d; --muted:#56615d; --line:#e3e7e5;
+  --brand:#0f5c4d; --brand-ink:#ffffff; --brand-soft:#e7f1ee;
+  --sand:#f7f2ea; --coral:#d9532c; --card:#ffffff;
+  --radius:18px; --shadow:0 10px 30px rgba(16,40,34,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--ink);background:#fff;line-height:1.6;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.02em;color:var(--brand);text-decoration:none}
+.logo span{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--coral);margin-left:3px;vertical-align:super}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;background:var(--brand);color:var(--brand-ink);font-weight:700;font-size:16px;text-decoration:none;border:2px solid var(--brand)}
+.btn:hover{background:#0b4a3e;border-color:#0b4a3e}
+.btn:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.btn.sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn.light{background:#fff;color:var(--brand);border-color:#fff}
+.btn.light:hover{background:var(--brand-soft)}
+
+
+.hero{background:linear-gradient(180deg,var(--sand) 0%,#fff 100%);padding:56px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.eyebrow{font-size:14px;font-weight:700;color:var(--brand);letter-spacing:.02em}
+.hero h1{font-size:46px;line-height:1.25;letter-spacing:-.03em;margin:12px 0 18px;font-weight:800}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:30em}
+.hero .cta{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.hero .note{font-size:14px;color:var(--muted)}
+
+
+.phone{width:300px;max-width:100%;margin:0 auto;background:#fff;border-radius:34px;box-shadow:var(--shadow);border:8px solid #1d2624;padding:18px 14px 20px;position:relative}
+.phone .bar{width:90px;height:6px;border-radius:9px;background:#1d2624;margin:0 auto 14px;opacity:.85}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--brand-soft);color:var(--brand);margin:0 4px 6px 0}
+.chip.c{background:#fbe9e3;color:#a63a1a}
+.mini-label{font-size:11px;font-weight:700;color:var(--muted);margin:10px 0 6px}
+.input{border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:13px;margin-bottom:6px;background:#fafbfa}
+.rec{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:10px}
+.rec b{font-size:14px}
+.rec .why{font-size:12px;color:var(--muted);margin-top:4px}
+.score{font-size:12px;font-weight:700;color:var(--brand)}
+
+
+.scope{padding:40px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scope .wrap{display:grid;grid-template-columns:repeat(4,1fr) 1.4fr;gap:14px;align-items:stretch}
+.cat{background:var(--sand);border-radius:var(--radius);padding:18px}
+.cat .ico{color:var(--brand);display:block}
+.cat b{display:block;font-size:17px;margin-top:6px}
+.cat small{color:var(--muted);font-size:13px}
+.honest{border:1px solid #d7e2de;border-radius:var(--radius);padding:18px;font-size:14px;color:var(--muted)}
+.honest b{color:var(--ink);display:block;margin-bottom:4px;font-size:15px}
+
+
+section.feat{padding:88px 0}
+section.feat.alt{background:#fafbfa}
+.label{font-size:14px;font-weight:700;color:var(--brand)}
+.feat h2{font-size:34px;line-height:1.35;letter-spacing:-.02em;margin:10px 0 0;font-weight:800}
+.feat .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:44px}
+.feat.rev .grid .txt{order:2}
+.point{margin-bottom:26px}
+.point h3{font-size:19px;margin-bottom:6px}
+.point p{color:var(--muted);font-size:16px}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;border:1px solid var(--line)}
+
+
+.panel{display:grid;grid-template-columns:.9fr 1.1fr;border-radius:28px;overflow:hidden}
+.panel .left{background:var(--brand);color:#fff;padding:48px 40px}
+.panel .left .label{color:#cfe6df}
+.panel .left h2{color:#fff}
+.panel .left p{color:#d9ebe6;margin-top:14px;font-size:16px}
+.panel .right{background:#f1f6f4;padding:40px}
+.src{display:grid;grid-template-columns:96px 1fr 44px;align-items:center;gap:10px;font-size:14px;margin-bottom:10px}
+.track{height:10px;border-radius:9px;background:#dfe7e4;overflow:hidden}
+.track i{display:block;height:100%;background:var(--brand);border-radius:9px}
+.track i.c{background:var(--coral)}
+.sum{margin-top:14px;font-size:14px;border-top:1px solid var(--line);padding-top:12px}
+.sum li{margin-left:18px;margin-bottom:4px}
+.flag{font-size:12px;color:#a63a1a;background:#fbe9e3;border-radius:8px;padding:6px 10px;margin-top:10px;display:inline-block}
+
+
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cmp .card{padding:16px}
+.cmp h4{font-size:15px}
+.cmp ul{list-style:none;margin-top:8px;font-size:13px;color:var(--muted)}
+.cmp li{padding:3px 0}
+.cmp li::before{content:"· ";color:var(--brand);font-weight:700}
+.again{margin-top:12px;text-align:center;font-size:14px;font-weight:700;color:var(--brand);border:1px solid var(--brand);border-radius:999px;padding:9px}
+
+
+.zone{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.zone:last-child{border-bottom:0}
+.dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:7px;background:var(--brand)}
+.dot.c{background:var(--coral)}
+.tl{position:relative;padding-left:22px;margin-top:6px}
+.tl::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl div{position:relative;font-size:14px;margin-bottom:12px}
+.tl div::before{content:"";position:absolute;left:-21px;top:6px;width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid var(--brand)}
+.tl small{color:var(--muted);display:block;font-size:12px}
+
+
+.closing{padding:88px 0}
+.closing .box{background:var(--ink);color:#fff;border-radius:28px;padding:56px 40px;text-align:center}
+.closing h2{font-size:34px;line-height:1.35;letter-spacing:-.02em}
+.closing p{color:#c9d2cf;margin:14px auto 28px;max-width:34em}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:13px;color:var(--muted)}
+
+
+@media (max-width:860px){
+  .hero{padding:36px 0 44px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px}
+  .hero h1{font-size:32px}
+  .hero p.lead{font-size:16px}
+  .scope .wrap{grid-template-columns:1fr 1fr}
+  .honest{grid-column:1/-1}
+  section.feat{padding:60px 0}
+  .feat h2,.closing h2{font-size:26px}
+  .feat .grid{grid-template-columns:1fr;gap:28px;margin-top:28px}
+  .feat.rev .grid .txt{order:0}
+  .panel{grid-template-columns:1fr;border-radius:22px}
+  .panel .left{padding:36px 24px}
+  .panel .right{padding:24px}
+  .closing{padding:60px 0}
+  .closing .box{padding:44px 22px}
+}
+@media (max-width:380px){.cmp{grid-template-columns:1fr}}
+</style>
+</head>
+<body style="margin:0">
+
+
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="처음으로">취향여행 AI<span aria-hidden="true"></span> <small style="font-weight:500;color:var(--muted);font-size:12px">가칭</small></a>
+    <a class="btn sm" href="#download">앱 다운로드</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">리뷰 탭 열 개 띄워 놓고 비교하던 여행 준비</p>
+        <h1>좋았던 여행을 알려 주면,<br>다음 여행은 저희가 골라 와요</h1>
+        <p class="lead">구글맵과 현지 리뷰를 함께 읽고 숙소·음식점·교통·치안을 추천해요. 추천 이유를 보고, 고르는 건 직접 하세요.</p>
+        <div class="cta">
+          <a class="btn" href="#download">앱 다운로드</a>
+          <span class="note">iOS · Android 무료</span>
+        </div>
+      </div>
+      <div class="phone" aria-label="추천 화면 예시">
+        <div class="bar"></div>
+        <div class="mini-label">좋았던 곳</div>
+        <div class="input">교토 · 조용한 골목 안 료칸</div>
+        <div class="input">타이베이 · 줄 서는 현지 국숫집</div>
+        <div><span class="chip">부모님과 3박</span><span class="chip">1인 80만 원</span><span class="chip c">갑각류 알레르기</span></div>
+        <div class="mini-label">추천 숙소 · 오사카</div>
+        <div class="rec">
+          <b>나카자키초 골목 료칸</b> <span class="score">취향 일치 높음</span>
+          <p class="why">조용한 골목 · 다다미 객실 — 좋아했던 교토 숙소와 비슷해요. 엘리베이터 있음.</p>
+        </div>
+        <div class="rec">
+          <b>덴마 시장 근처 호텔</b> <span class="score">취향 일치 보통</span>
+          <p class="why">현지 식당가 도보 3분 · 밤 10시 이후 골목은 어두운 편</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scope" aria-label="추천 범위">
+    <div class="wrap">
+      <div class="cat"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18V7"/><path d="M3 14h18v4"/><path d="M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg><b>숙소</b><small>좋았던 숙소와 닮은 곳</small></div>
+      <div class="cat"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 7l2-4M12 7l2-4"/></svg><b>음식점</b><small>입맛 · 못 먹는 음식까지</small></div>
+      <div class="cat"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14"/><path d="M8 21l2-4M16 21l-2-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/></svg><b>교통</b><small>경로와 걸리는 시간</small></div>
+      <div class="cat"><svg class="ico" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><b>치안</b><small>동네 · 시간대별 주의</small></div>
+      <div class="honest"><b>한 앱에서 한 번에</b>리뷰 탭 열 개 대신, 좋았던 곳 몇 개만 알려 주면 네 가지를 함께 추천해요.</div>
+    </div>
+  </section>
+
+  <section class="feat">
+    <div class="wrap">
+      <p class="label">맞춤 추천</p>
+      <h2>검색어 대신,<br>좋았던 곳을 알려 주세요</h2>
+      <div class="grid">
+        <div class="txt">
+          <div class="point"><h3>예전에 좋았던 숙소·여행지에서 출발해요</h3><p>「조용한」 「현지 느낌」 같은 말을 고르지 않아도, 좋았던 곳 몇 개면 취향을 읽어요.</p></div>
+          <div class="point"><h3>누구와, 얼마로, 며칠</h3><p>부모님과 가는지 친구와 가는지, 예산과 일정 안에서 가능한 곳만 추천해요.</p></div>
+          <div class="point"><h3>입맛과 못 먹는 음식</h3><p>좋아하는 메뉴는 살리고, 알레르기·채식·할랄처럼 피해야 할 음식은 걸러요.</p></div>
+        </div>
+        <div class="card">
+          <div class="mini-label" style="margin-top:0">여행 조건</div>
+          <div class="input">누구와 · 부모님(60대) 2명</div>
+          <div class="input">예산 · 1인 80만 원 · 3박 4일</div>
+          <div class="mini-label">음식</div>
+          <div><span class="chip">국물 요리</span><span class="chip">현지 시장</span><span class="chip c">갑각류 제외</span><span class="chip c">매운 음식 적게</span></div>
+          <div class="mini-label">좋았던 곳 3개</div>
+          <div class="input">교토 · 골목 료칸</div>
+          <div class="input">타이베이 · 현지 국숫집</div>
+          <div class="input">후쿠오카 · 강가 산책길</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feat alt" style="padding-top:0;padding-bottom:0;background:#fff">
+    <div class="wrap">
+      <div class="panel">
+        <div class="left">
+          <p class="label">리뷰 · 정보 신뢰</p>
+          <h2>구글맵 별점만 보고<br>고르셨나요?</h2>
+          <p>현지 사람들이 쓰는 리뷰 사이트의 평가까지 함께 읽어요. 광고처럼 보이는 리뷰는 덜 믿고, 영업시간·휴업 정보는 최신으로 맞춰요.</p>
+        </div>
+        <div class="right">
+          <div class="card">
+            <b style="font-size:15px">골목 우동집</b>
+            <div style="margin-top:12px">
+              <div class="src"><span>구글맵</span><div class="track"><i style="width:88%"></i></div><span>4.4</span></div>
+              <div class="src"><span>현지 리뷰</span><div class="track"><i class="c" style="width:70%"></i></div><span>3.5</span></div>
+            </div>
+            <ul class="sum">
+              <li>현지 리뷰: 국물은 좋지만 점심엔 30분 줄</li>
+              <li>여행자 리뷰: 영어 메뉴 있음 · 친절</li>
+            </ul>
+            <span class="flag">비슷한 문장 리뷰 12개는 반영에서 뺐어요</span>
+            <p style="font-size:12px;color:var(--muted);margin-top:8px">영업시간 확인 · 오늘 오전</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feat rev">
+    <div class="wrap">
+      <p class="label">선택 · 비교</p>
+      <h2>왜 추천했는지 보고,<br>고르는 건 직접</h2>
+      <div class="grid">
+        <div class="txt">
+          <div class="point"><h3>추천마다 이유가 붙어요</h3><p>「좋아했던 교토 숙소와 비슷해서」처럼, 무엇을 보고 골랐는지 먼저 보여 줘요.</p></div>
+          <div class="point"><h3>후보끼리 나란히</h3><p>가격·거리·리뷰를 같은 줄에 놓고 비교해요.</p></div>
+          <div class="point"><h3>마음에 안 들면 바로 다시</h3><p>조건 하나만 바꿔서 다른 후보를 다시 받아요.</p></div>
+        </div>
+        <div>
+          <div class="cmp">
+            <div class="card">
+              <h4>골목 료칸</h4>
+              <ul><li>1박 18만 원</li><li>역에서 도보 6분</li><li>조용함 · 다다미</li><li>현지 리뷰 4.1</li></ul>
+            </div>
+            <div class="card">
+              <h4>시장 앞 호텔</h4>
+              <ul><li>1박 14만 원</li><li>역에서 도보 2분</li><li>밤엔 시끄러운 편</li><li>현지 리뷰 3.7</li></ul>
+            </div>
+          </div>
+          <div class="again" aria-hidden="true">↻ 다른 후보 보기</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feat alt">
+    <div class="wrap">
+      <p class="label">교통 · 안전 · 일정</p>
+      <h2>이 동네, 밤에 걸어도 괜찮을까?</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="mini-label" style="margin-top:0">숙소 주변 · 동네별 주의</div>
+          <div class="zone"><span class="dot"></span><div><b>숙소 골목</b> — 밤에도 조용하고 사람 통행 있음</div></div>
+          <div class="zone"><span class="dot c"></span><div><b>역 뒤편 유흥가</b> — 밤 11시 이후 호객 주의</div></div>
+          <div class="mini-label">둘째 날 일정</div>
+          <div class="tl">
+            <div>10:00 강변 산책길<small>숙소에서 지하철 12분</small></div>
+            <div>12:30 골목 우동집<small>도보 8분 · 점심 줄 30분</small></div>
+            <div>15:00 시장 구경<small>버스 15분</small></div>
+          </div>
+        </div>
+        <div class="txt">
+          <div class="point"><h3>동네·시간대별 치안 정보</h3><p>도시 전체 평이 아니라, 묵을 동네와 다닐 시간대 기준으로 알려 줘요.</p></div>
+          <div class="point"><h3>이동 경로와 걸리는 시간</h3><p>장소 사이 경로와 시간을 일정에 같이 넣어요.</p></div>
+          <div class="point"><h3>지도와 시간표로 한눈에, 함께 보기</h3><p>고른 곳은 일정으로 저장하고 동행자에게 공유해요. 예약은 각 숙소·식당 예약 페이지로 이어져요.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" id="download">
+    <div class="wrap">
+      <div class="box">
+        <h2>다음 여행은<br>취향으로 고르세요</h2>
+        <p>좋았던 숙소·여행지 몇 개면 충분해요. 리뷰를 읽고 골라 올게요.</p>
+        <a class="btn light" href="#download">앱 다운로드</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    YOUTH AI · 대표 박명식<br>
+    서비스 이용약관 · 개인정보 처리방침 · 위치정보 이용약관 · 고객센터<br>
+    서비스 이름은 가칭입니다
+  </div>
+</footer>
+
+<script>
+</script>
+
+</body>
+</html>
